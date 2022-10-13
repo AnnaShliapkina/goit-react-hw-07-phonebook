@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ContactCards, Name, Number, DeleteBtn } from './ContactCard.styled';
 
-export const ContactCard = ({ name, number, id, onDeleteButton }) => {
+export const ContactCard = ({ name, phone, id, onDeleteButton }) => {
   return (
     <ContactCards>
       <Name>{name}</Name>
-      <Number>{number}</Number>
+      <Number>{phone}</Number>
       <DeleteBtn type="button" id={id} onClick={onDeleteButton}>
         Delete
       </DeleteBtn>
@@ -13,9 +13,9 @@ export const ContactCard = ({ name, number, id, onDeleteButton }) => {
   );
 };
 
-ContactCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  number: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  onDeleteButton: PropTypes.func,
-};
+// ContactCard.propTypes = {
+//   name: PropTypes.string.isRequired,
+//   number: PropTypes.string.isRequired,
+//   id: PropTypes.string.isRequired,
+//   onDeleteButton: PropTypes.func,
+// };

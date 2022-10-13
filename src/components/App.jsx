@@ -1,29 +1,29 @@
-// import React, { useState, useRef, useEffect } from 'react';
-// import { nanoid } from 'nanoid';
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { SectionRender } from './Section/Section';
-import { useSelector } from 'react-redux';
-import { selectedContacts } from 'redux/contactSlice';
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import ContactFilter from './Filter/Filter';
+import Section from './Section/Section';
 
-export const App = () => {
-  const contacts = useSelector(selectedContacts);
+import { useGetContactsQuery } from 'redux/contactsApi';
+
+function App() {
+  const { data: contacts, isLoading } = useGetContactsQuery();
 
   return (
-    <SectionRender>
+    <Section>
       <h1>Phonebook</h1>
       <ContactForm />
       <h2>Contacts</h2>
-      <Filter />
 
-      {contacts.length > 0 ? (
+      {contacts?.length > 0 && (
         <>
-          <ContactList />
+          <ContactFilter />
         </>
-      ) : (
-        <p>Contact list is empty</p>
       )}
-    </SectionRender>
+      {isLoading && <p>Loading...</p>}
+      {contacts?.length === 0 && !isLoading && <p>Contact List is empty</p>}
+      <ContactList />
+    </Section>
   );
-};
+}
+
+export default App;
