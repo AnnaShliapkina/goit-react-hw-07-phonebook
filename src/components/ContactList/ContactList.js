@@ -14,20 +14,20 @@ const ContactList = () => {
   const [deleteContact] = useDeleteContactMutation();
   const filterValue = useSelector(state => state.filter);
 
-  const filteredContacts = contacts?.filter(contact =>
+  const filterContcts = contacts?.filter(contact =>
     contact.name.toLowerCase().includes(filterValue)
   );
 
   return (
     <List>
       {!isLoading &&
-        filteredContacts.reverse().map(({ name, id, phone }) => {
+        filterContcts.reverse().map(({ name, id, phone }) => {
           return (
             <ContactCard
               key={id}
               id={id}
               name={name}
-              number={phone}
+              phone={phone}
               onDeleteButton={() => deleteContact(id)}
             />
           );

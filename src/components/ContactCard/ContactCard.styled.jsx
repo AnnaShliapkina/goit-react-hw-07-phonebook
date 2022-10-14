@@ -14,6 +14,7 @@ export const Name = styled.span`
 `;
 export const Number = styled.span`
   font-weight: 700;
+  color: blue;
 `;
 export const DeleteBtn = styled.button`
   display: inline-flex;
